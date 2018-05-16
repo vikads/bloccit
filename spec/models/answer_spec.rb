@@ -6,5 +6,5 @@ RSpec.describe Answer, type: :model do
 
   it "should respond to body" do
     expect(answer).to respond_to(:body)
-  end  
+  end
 end
