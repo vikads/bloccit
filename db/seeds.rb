@@ -22,15 +22,12 @@ require 'random_data'
  # end
 
  puts "#{Post.count}"
- Post.find_or_create_by(title: "Very unique title", body: "More unique body")
+ post = Post.find_or_create_by(title: "Very unique title", body: "More unique body")
  puts "#{Post.count}"
 
  puts "#{Comment.count}"
- Comment.find_or_create_by(post_id: 101, body: "Very unique comment")
+ Comment.find_or_create_by(post: post, body: "Very unique comment")
  puts "#{Comment.count}"
-
-
-
 
 
 
