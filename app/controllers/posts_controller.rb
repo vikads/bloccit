@@ -12,6 +12,8 @@ class PostsController < ApplicationController
   end
 
   def new
+    #we create an instance variable, @post, then assign it an empty post returned by Post.new.
+    @post = Post.new
   end
 
   def edit
