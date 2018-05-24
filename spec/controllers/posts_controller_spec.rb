@@ -81,7 +81,7 @@ RSpec.describe PostsController, type: :controller do
        get :edit, {id: my_post.id}
        expect(response).to render_template :edit
      end
- 
+
      it "assigns post to be updated to @post" do
        get :edit, {id: my_post.id}
 
@@ -112,6 +112,21 @@ RSpec.describe PostsController, type: :controller do
 
        put :update, id: my_post.id, post: {title: new_title, body: new_body}
        expect(response).to redirect_to my_post
+     end
+   end
+
+   describe "DELETE #destroy" do
+     it "deletes thepost" do
+       delete :destroy, {id: my_post.id}
+
+       count = Post.where({id: my_post.id}).size
+       expect(count).to eq 0
+     end
+
+     it "redirects to posts index" do
+       delete :destroy, {id: my_post.id}
+
+       expect(response).to redirect_to posts_path 
      end
    end
 
