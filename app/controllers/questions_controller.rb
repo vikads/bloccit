@@ -32,18 +32,28 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    @question = Question.find(params[:id])
-    @question.title = params[:question][:title]
-    @question.body = params[:question][:body]
-    @question.resolved = params[:question][:resolved]
+    # @question = Question.find(params[:id])
+    # @question.title = params[:question][:title]
+    # @question.body = params[:question][:body]
+    # @question.resolved = params[:question][:resolved]
+    #
+    # if @question.save
+    #   flash[:notice] = "Question was updated."
+    #   redirect_to @question
+    # else
+    #   flash.now[:alert] =  "There was an error updating the question. Please try again."
+    #   render :edit
+    # end
 
-    if @question.save
+    @question = Question.find(params[:id])
+    if @question.update_attributes(params.require(:question).permit(:title, :body, :resolved))
       flash[:notice] = "Question was updated."
       redirect_to @question
     else
       flash.now[:alert] =  "There was an error updating the question. Please try again."
       render :edit
     end
+
   end
 
   def destroy
