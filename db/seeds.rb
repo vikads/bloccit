@@ -20,6 +20,16 @@ require 'random_data'
    )
  end
 
+ # Create Advertisement
+ 50.times do
+
+   Advertisement.create(
+    title: RandomData.random_sentence,
+    body: RandomData.random_paragraph,
+    price: 100
+  )
+ end
+
  # Create Question
  50.times do
 
@@ -43,4 +53,5 @@ require 'random_data'
  puts "Seed finished"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
+ puts "#{Advertisement.count} ads created"
  puts "#{Question.count} questions created"
