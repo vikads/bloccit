@@ -55,7 +55,7 @@ class TopicsController < ApplicationController
     else
       flash.now[:alert] = "There was an error deleting the topic."
       render :show
-    end 
+    end
   end
 
 end
