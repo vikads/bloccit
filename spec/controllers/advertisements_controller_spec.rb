@@ -75,4 +75,4 @@ RSpec.describe AdvertisementsController, type: :controller do
   end
 
 
-end
+# end
