@@ -1,19 +1,34 @@
 require 'random_data'
 
+# Create Users
+5.times do
+  User.create!(
+    name: RandomData.random_name,
+    email: RandomData.random_email,
+    password: RandomData.random_sentence
+  )
+end
+users = User.all
+
+
+
  # Create Topics
  15.times do
    Topic.create!(
      name: RandomData.random_sentence,
-     description: RandomData.random_sentence
+     description: RandomData.random_paragraph
    )
  end
+ topics = Topic.all
 
  # Create Posts
  50.times do
 
    Post.create!(
-     title:  RandomData.random_sentence,
-     body:   RandomData.random_paragraph
+     user: users.sample,
+     topic: topics.sample,
+     title:  RandomData.random_sentence,  #Faker::Lorem.sentence,
+     body:  RandomData.random_paragraph  # Faker::Lorem.paragraph
    )
  end
 
@@ -48,6 +63,13 @@ require 'random_data'
    )
  end
 
+ user = User.first
+ user.update_attributes!(
+   email: "baba@baba",
+   password: "bababa"
+ )
+
+
  puts "#{Post.count}"
  post = Post.find_or_create_by(title: "Very unique title", body: "More unique body")
  puts "#{Post.count}"
@@ -59,7 +81,8 @@ require 'random_data'
 
 
  puts "Seed finished"
- puts "#{Topic.count} topics created" 
+ puts "#{User.count} users created"
+ puts "#{Topic.count} topics created"
  puts "#{Post.count} posts created"
  puts "#{Comment.count} comments created"
  puts "#{Advertisement.count} ads created"
