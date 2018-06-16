@@ -75,7 +75,6 @@ RSpec.describe PostsController, type: :controller do
      end
 
 
-
     describe "GET #show" do
       it "returns http success" do
         get :show, topic_id: my_topic.id, id: my_post.id
@@ -185,6 +184,6 @@ RSpec.describe PostsController, type: :controller do
          expect(response).to redirect_to my_topic
        end
      end
-   end 
+   end
 
 end

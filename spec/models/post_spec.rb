@@ -9,7 +9,7 @@ RSpec.describe Post, type: :model do
 
   let(:topic)   { Topic.create!(name: name, description: description) }
 
-  let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworls") }
+  let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld") }
 
   let(:post) { topic.posts.create!(title: title, body: body, user: user) }
 
