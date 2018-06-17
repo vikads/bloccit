@@ -63,12 +63,20 @@ users = User.all
    )
  end
 
- user = User.first
- user.update_attributes!(
-   email: "baba@baba",
-   password: "bababa"
+ # create admin user
+ admin = User.create!(
+   name: 'Admin User!',
+   email: 'admin@example.com',
+   password: 'helloworld',
+   role: 'admin'
  )
 
+ # create a memeber
+ member = User.create!(
+   name: 'Member User',
+   email: 'member@example.com',
+   password: 'hellowrld'
+ )
 
  puts "#{Post.count}"
  post = Post.find_or_create_by(title: "Very unique title", body: "More unique body")
