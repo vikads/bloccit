@@ -20,6 +20,10 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  def favorite_for(post)
+     favorites.where(post_id: post.id).first
+  end
+
   enum role: [:member, :admin]
 
 end
