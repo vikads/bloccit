@@ -49,6 +49,8 @@ class PostsController < ApplicationController
        render :edit
      end
    end
+
+
    def destroy
      @post = Post.find(params[:id])
 
@@ -61,11 +63,13 @@ class PostsController < ApplicationController
      end
    end
 
+
    private
 
    def post_params
      params.require(:post).permit(:title, :body)
    end
+
 
    def authorize_current_user_or_admin
      post = Post.find(params[:id])
@@ -75,6 +79,7 @@ class PostsController < ApplicationController
        redirect_to [post.topic, post]
      end
    end
+
 
    def authorize_current_user_or_admin_or_moderator
      post = Post.find(params[:id])
