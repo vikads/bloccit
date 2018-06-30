@@ -15,6 +15,7 @@ RSpec.describe Post, type: :model do
 
   it { is_expected.to have_many(:comments) }
   it { is_expected.to have_many(:votes) }
+  it { is_expected.to have_many(:favorites) }
 
   it { is_expected.to belong_to(:topic) }
   it { is_expected.to belong_to(:user) }
@@ -61,7 +62,7 @@ RSpec.describe Post, type: :model do
     end
 
     describe "#update_rank" do
- 
+
        it "calculates the correct rank" do
          post.update_rank
          expect(post.rank).to eq (post.points + (post.created_at - Time.new(1970,1,1)) / 1.day.seconds)

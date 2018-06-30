@@ -36,3 +36,5 @@ source 'https://rubygems.org'
  gem 'bcrypt'
 
  gem 'faker'
+
+ gem 'figaro', '1.0'
