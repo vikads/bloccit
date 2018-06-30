@@ -10,3 +10,8 @@ class CreateVotes < ActiveRecord::Migration
 
   end
 end
+
+# add_index :ballots, :user_id
+# or, if you want it indexed automatically:
+#
+# t.references :user, index: true
